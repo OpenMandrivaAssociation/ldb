@@ -19,7 +19,7 @@ URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
 Source: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
 Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
-BuildRequires: python-devel tevent-devel >= 0.9.11 talloc-devel >= 2.0.5 pytalloc-util-devel >= 2.0.5 python-tevent python-tdb openldap-devel
+BuildRequires: python-devel tevent-devel >= 0.9.11 talloc-devel >= 2.0.5 pytalloc-util-devel >= 2.0.5 python-tevent python-tdb openldap-devel tdb-devel
 BuildRequires: docbook-style-xsl xsltproc
 BuildRoot: %{_tmppath}/%{name}-root
 
