@@ -79,6 +79,7 @@ Development files for utility library for using tdb functions in python.
 
 %prep
 %setup -q
+perl -pi -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/docbook/xsl-stylesheets,g' docs/builddocs.sh buildtools/wafsamba/wafsamba.py buildtools/wafsamba/samba_conftests.py
 
 %build
 %configure2_5x --with-modulesdir=%{_libdir}
