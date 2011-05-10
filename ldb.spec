@@ -12,7 +12,7 @@ Name: ldb
 Version: %ldbver
 # We shipped it in samba3 versioned with the samba3 version
 Epoch: %epoch
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/Libraries
 License: GPLv2
 URL: http://ldb.samba.org/
