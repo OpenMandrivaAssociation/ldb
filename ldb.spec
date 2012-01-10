@@ -1,5 +1,5 @@
 %define ldbmajor	1
-%define ldbver		1.1.0
+%define ldbver		1.1.4
 %define epoch 1
 
 %define libldb %mklibname ldb %ldbmajor
@@ -8,18 +8,34 @@
 %define libpyldbutil %mklibname pyldb-util 1
 %define libpyldbutildevel %mklibname -d pyldb-util
 
+%define check_sig() export GNUPGHOME=%{_tmppath}/rpm-gpghome \
+if [ -d "$GNUPGHOME" ] \
+then echo "Error, GNUPGHOME $GNUPGHOME exists, remove it and try again"; exit 1 \
+fi \
+install -d -m700 $GNUPGHOME \
+gpg --import %{1} \
+gpg --trust-model always --verify %{2} %{?3} \
+rm -Rf $GNUPGHOME \
+
+
 Name: ldb
 Version: %ldbver
 # We shipped it in samba3 versioned with the samba3 version
 Epoch: %epoch
-Release: %mkrel 2
+Release: %mkrel 1
 Group: System/Libraries
 License: GPLv2
 URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
 Source: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
-Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
-BuildRequires: python-devel tevent-devel >= 0.9.11 talloc-devel >= 2.0.5 pytalloc-util-devel >= 2.0.5 python-tevent python-tdb openldap-devel tdb-devel
+Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz.asc
+Source2: jelmer.asc
+Patch1: ldb-1.1.4-disable-pyevent-check.patch
+BuildRequires: python-devel
+BuildRequires: openldap-devel
+BuildRequires: tevent-devel >= 0.9.14 python-tevent >= 0.9.14
+BuildRequires: talloc-devel >= 2.0.7 pytalloc-util-devel >= 2.0.7
+BuildRequires: python-tdb >= 1.2.9 tdb-devel >= 1.2.9
 BuildRequires: docbook-style-xsl xsltproc
 BuildRoot: %{_tmppath}/%{name}-root
 
@@ -78,17 +94,19 @@ Requires: %libpyldbutil = %epoch:%{version}
 Development files for utility library for using tdb functions in python.
 
 %prep
+%check_sig %{SOURCE2} %{SOURCE1} %{SOURCE0}
+
 %setup -q
+%patch1 -p1 -b .nopyeventver
 perl -pi -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/docbook/xsl-stylesheets,g' docs/builddocs.sh buildtools/wafsamba/wafsamba.py buildtools/wafsamba/samba_conftests.py
 
 %build
-%configure2_5x --with-modulesdir=%{_libdir}
+%configure2_5x --with-modulesdir=%{_libdir} --bundled-libraries=NONE --disable-rpath
 %make
 
 %install
 rm -Rf %{buildroot}
 %makeinstall_std
-rm -f %{buildroot}/%{py_platsitedir}/_tevent.so
 
 %clean
 rm -Rf %{buildroot}
@@ -101,8 +119,8 @@ rm -Rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/libldb.so
 #{_libdir}/libldb.a
-%{_includedir}/ldb*.h
 %{_libdir}/pkgconfig/ldb.pc
+%{_includedir}/ldb*.h
 
 %files -n ldb-utils
 %defattr(-,root,root)
