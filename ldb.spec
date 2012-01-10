@@ -33,6 +33,7 @@ Source2: jelmer.asc
 Patch1: ldb-1.1.4-disable-pyevent-check.patch
 BuildRequires: python-devel
 BuildRequires: openldap-devel
+BuildRequires: popt-devel
 BuildRequires: tevent-devel >= 0.9.14 python-tevent >= 0.9.14
 BuildRequires: talloc-devel >= 2.0.7 pytalloc-util-devel >= 2.0.7
 BuildRequires: python-tdb >= 1.2.9 tdb-devel >= 1.2.9
