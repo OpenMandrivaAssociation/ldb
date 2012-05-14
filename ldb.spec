@@ -28,7 +28,7 @@ License: GPLv2
 URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
 Source: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
-Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz.asc
+Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
 Source2: jelmer.asc
 Patch1: ldb-1.1.4-disable-pyevent-check.patch
 BuildRequires: python-devel
