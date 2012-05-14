@@ -1,5 +1,5 @@
 %define ldbmajor	1
-%define ldbver		1.1.4
+%define ldbver		1.1.6
 %define epoch 1
 
 %define libldb %mklibname ldb %ldbmajor
