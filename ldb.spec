@@ -95,7 +95,7 @@ Requires: %libpyldbutil = %epoch:%{version}
 Development files for utility library for using tdb functions in python.
 
 %prep
-%check_sig %{SOURCE2} %{SOURCE1} %{SOURCE0}
+#check_sig %{SOURCE2} %{SOURCE1} %{SOURCE0}
 
 %setup -q
 %patch1 -p1 -b .nopyeventver
