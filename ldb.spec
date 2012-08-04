@@ -1,6 +1,14 @@
 %define ldbmajor	1
-%define ldbver		1.1.6
+%define ldbver		1.1.7
 %define epoch 1
+%define beta beta5
+
+# beta releases are taken from the samba4 tarball using
+# mkdir -p ldb-1.1.7/lib
+# cp -a lib/ldb/* ldb-1.1.7/
+# cp -a lib/popt lib/tdb lib/replace lib/talloc lib/tevent ldb-1.1.7/lib/
+# cp -a buildtools/ ldb-1.1.7/
+# tar cf ldb-1.1.7.tar ldb-1.1.7
 
 %define libldb %mklibname ldb %ldbmajor
 %define ldbdevel %mklibname -d ldb
@@ -22,23 +30,25 @@ Name: ldb
 Version: %ldbver
 # We shipped it in samba3 versioned with the samba3 version
 Epoch: %epoch
-Release: 1
 Group: System/Libraries
 License: GPLv2
 URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
-Source: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
+Source: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.xz
+%if "%beta" != ""
+Release: 0.%beta.1
+%else
+Release: 1
 Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
 Source2: jelmer.asc
-Patch1: ldb-1.1.4-disable-pyevent-check.patch
+%endif
 BuildRequires: python-devel
 BuildRequires: openldap-devel
 BuildRequires: popt-devel
-BuildRequires: tevent-devel >= 0.9.14 python-tevent >= 0.9.14
+BuildRequires: tevent-devel >= 0.9.16 python-tevent >= 0.9.16
 BuildRequires: talloc-devel >= 2.0.7 pytalloc-util-devel >= 2.0.7
 BuildRequires: python-tdb >= 1.2.9 tdb-devel >= 1.2.9
 BuildRequires: docbook-style-xsl xsltproc
-BuildRoot: %{_tmppath}/%{name}-root
 
 %description
 Library implementing Samba's embedded database and utilities for backing up,
@@ -98,11 +108,12 @@ Development files for utility library for using tdb functions in python.
 #check_sig %{SOURCE2} %{SOURCE1} %{SOURCE0}
 
 %setup -q
-%patch1 -p1 -b .nopyeventver
 perl -pi -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/docbook/xsl-stylesheets,g' docs/builddocs.sh buildtools/wafsamba/wafsamba.py buildtools/wafsamba/samba_conftests.py
 
 %build
-%configure2_5x --with-modulesdir=%{_libdir} --bundled-libraries=NONE --disable-rpath --disable-tdb2
+# The ldb linker script is incompatible with gold
+export LDFLAGS="$RPM_OPT_FLAGS -fuse-ld=bfd"
+%configure2_5x --with-modulesdir=%{_libdir} --bundled-libraries=NONE --disable-rpath
 %make
 
 %install
