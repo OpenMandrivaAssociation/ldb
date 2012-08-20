@@ -1,7 +1,7 @@
 %define ldbmajor	1
 %define ldbver		1.1.7
 %define epoch 1
-%define beta beta5
+%define beta beta6
 
 # beta releases are taken from the samba4 tarball using
 # mkdir -p ldb-1.1.7/lib
