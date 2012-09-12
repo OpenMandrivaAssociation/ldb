@@ -1,7 +1,7 @@
 %define ldbmajor	1
 %define ldbver		1.1.7
 %define epoch 1
-%define beta beta6
+%define beta beta8
 
 # beta releases are taken from the samba4 tarball using
 # mkdir -p ldb-1.1.7/lib
@@ -45,7 +45,7 @@ Source2: jelmer.asc
 BuildRequires: python-devel
 BuildRequires: openldap-devel
 BuildRequires: popt-devel
-BuildRequires: tevent-devel >= 0.9.16 python-tevent >= 0.9.16
+BuildRequires: tevent-devel >= 1:0.9.16-0.beta8.0 python-tevent >= 1:0.9.16-0.beta8.0
 BuildRequires: talloc-devel >= 2.0.7 pytalloc-util-devel >= 2.0.7
 BuildRequires: python-tdb >= 1.2.9 tdb-devel >= 1.2.9
 BuildRequires: docbook-style-xsl xsltproc
