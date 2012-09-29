@@ -1,5 +1,5 @@
 %define ldbmajor	1
-%define ldbver		1.1.7
+%define ldbver		1.1.12
 %define epoch 1
 %define beta beta8
 
@@ -34,7 +34,7 @@ Group: System/Libraries
 License: GPLv2
 URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
-Source: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.xz
+Source0: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
 %if "%beta" != ""
 Release: 0.%beta.1
 %else
@@ -117,40 +117,30 @@ export LDFLAGS="$RPM_OPT_FLAGS -fuse-ld=bfd"
 %make
 
 %install
-rm -Rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -Rf %{buildroot}
-
 %files -n %libldb
-%defattr(-,root,root)
 %{_libdir}/libldb.so.%{ldbmajor}*
 
 %files -n %ldbdevel
-%defattr(-,root,root)
 %{_libdir}/libldb.so
 #{_libdir}/libldb.a
 %{_libdir}/pkgconfig/ldb.pc
 %{_includedir}/ldb*.h
 
 %files -n ldb-utils
-%defattr(-,root,root)
 %{_bindir}/ldb*
 %{_libdir}/ldb
 %{_mandir}/man1/ldb*.1%{_extension}
 %{_mandir}/man3/ldb*.3%{_extension}
 
 %files -n python-ldb
-%defattr(-,root,root)
 %{py_platsitedir}/ldb.so
 
 %files -n %libpyldbutil
-%defattr(-,root,root)
 %{_libdir}/libpyldb-util.so.1*
 
 %files -n %libpyldbutildevel
-%defattr(-,root,root)
 %{_libdir}/libpyldb-util.so
 %{_includedir}/pyldb.h
 %{_libdir}/pkgconfig/pyldb-util.pc
