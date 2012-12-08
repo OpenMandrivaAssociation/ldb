@@ -25,7 +25,6 @@ gpg --import %{1} \
 gpg --trust-model always --verify %{2} %{?3} \
 rm -Rf $GNUPGHOME \
 
-
 Name: ldb
 Version: %ldbver
 # We shipped it in samba3 versioned with the samba3 version
@@ -38,7 +37,7 @@ Source0: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
 %if "%beta" != ""
 Release: 0.%beta.1
 %else
-Release: 1
+Release: 2
 Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
 Source2: jelmer.asc
 %endif
@@ -106,13 +105,15 @@ Development files for utility library for using tdb functions in python.
 
 %prep
 #check_sig %{SOURCE2} %{SOURCE1} %{SOURCE0}
-
 %setup -q
 perl -pi -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/docbook/xsl-stylesheets,g' docs/builddocs.sh buildtools/wafsamba/wafsamba.py buildtools/wafsamba/samba_conftests.py
 
+# Fix unreadable files
+find . -perm 0640 -exec chmod 0644 '{}' \;
+
 %build
 # The ldb linker script is incompatible with gold
-export LDFLAGS="$RPM_OPT_FLAGS -fuse-ld=bfd"
+export LDFLAGS="%{optflags} -fuse-ld=bfd"
 %configure2_5x --with-modulesdir=%{_libdir} --bundled-libraries=NONE --disable-rpath
 %make
 
