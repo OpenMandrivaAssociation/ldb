@@ -39,7 +39,7 @@ Release: 0.%beta.1
 %else
 Release: 1
 Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
-Source2: samba-pubkey.asc
+Source2: jelmer.asc
 %endif
 BuildRequires: python-devel
 BuildRequires: openldap-devel
