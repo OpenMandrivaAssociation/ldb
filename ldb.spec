@@ -1,6 +1,4 @@
 %define ldbmajor	1
-%define ldbver		1.1.15
-%define epoch 1
 %define beta %nil
 
 # beta releases are taken from the samba4 tarball using
@@ -26,19 +24,19 @@ gpg --trust-model always --verify %{2} %{?3} \
 rm -Rf $GNUPGHOME \
 
 Name: ldb
-Version: %ldbver
+Version: 1.1.15
 # We shipped it in samba3 versioned with the samba3 version
-Epoch: %epoch
+Epoch: 1
 Group: System/Libraries
 License: GPLv2
 URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
-Source0: http://www.samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
+Source0: http://www.samba.org/ftp/ldb/ldb-%version.tar.gz
 %if "%beta" != ""
 Release: 0.%beta.1
 %else
 Release: 1
-Source1: http://www.samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
+Source1: http://www.samba.org/ftp/ldb/ldb-%version.tar.asc
 Source2: samba-pubkey.asc
 %endif
 BuildRequires: python-devel
@@ -53,7 +51,7 @@ BuildRequires: docbook-style-xsl xsltproc
 %track
 prog %name = {
 	url = http://www.samba.org/ftp/ldb/
-	version = %ldbver
+	version = %version
 	regex = %name-(__VER__)\.tar\.gz
 }
 
@@ -79,9 +77,8 @@ Tools for backing up, restoring, and manipulating Samba's embedded database
 %package -n %ldbdevel
 Group: Development/C
 Summary: Library implementing Samba's embedded database
-Provides: ldb-devel = %{epoch}:%{version}-%{release}
-#Version: %ldbver
-Requires: %libldb = %{epoch}:%{version}-%{release}
+Provides: ldb-devel = %EVRD
+Requires: %libldb = %EVRD
 # because /usr/include/ldb.h was moved from libsmbclient0-devel to libldb-devel
 Conflicts: %{mklibname smbclient 0 -d} < 3.2.6-3
 
@@ -105,8 +102,8 @@ Utility library for using tdb functions in python.
 %package -n %libpyldbutildevel
 Group: Development/Python
 Summary: Development files for utility library for using tdb functions in python
-Provides: pyldb-util-devel = %{version}-%{release}
-Requires: %libpyldbutil = %epoch:%{version}
+Provides: pyldb-util-devel = %EVRD
+Requires: %libpyldbutil = %EVRD
 
 %description -n %libpyldbutildevel
 Development files for utility library for using tdb functions in python.
