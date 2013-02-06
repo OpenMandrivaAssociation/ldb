@@ -1,5 +1,5 @@
 %define ldbmajor	1
-%define ldbver		1.1.14
+%define ldbver		1.1.15
 %define epoch 1
 %define beta %nil
 
@@ -33,12 +33,12 @@ Group: System/Libraries
 License: GPLv2
 URL: http://ldb.samba.org/
 Summary: Library implementing Samba's embedded database
-Source0: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
+Source0: http://www.samba.org/ftp/ldb/ldb-%{ldbver}.tar.gz
 %if "%beta" != ""
 Release: 0.%beta.1
 %else
 Release: 1
-Source1: http://samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
+Source1: http://www.samba.org/ftp/ldb/ldb-%{ldbver}.tar.asc
 Source2: samba-pubkey.asc
 %endif
 BuildRequires: python-devel
