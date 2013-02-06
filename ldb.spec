@@ -50,6 +50,13 @@ BuildRequires: talloc-devel >= 2.0.7 pytalloc-util-devel >= 2.0.7
 BuildRequires: python-tdb >= 1.2.9 tdb-devel >= 1.2.9
 BuildRequires: docbook-style-xsl xsltproc
 
+%track
+prog %name = {
+	url = http://www.samba.org/ftp/ldb/
+	version = %ldbver
+	regex = %name-(__VER__)\.tar\.gz
+}
+
 %description
 Library implementing Samba's embedded database and utilities for backing up,
 restoring and manipulating the database.
