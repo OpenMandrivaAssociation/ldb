@@ -1,6 +1,6 @@
 removed_sources:
-  ldb-1.1.15.tar.gz: 869eb3a75dd05ccd4eb03677475a39d54a13cd6d
   ldb-1.1.15.tar.asc: 34b198ddff681a1c7d14dd3601f4678c9943474e
-sources:
-  ldb-1.1.16.tar.asc: 47eb96a74cc89ec3b02e5890ff9cfba285419458
+  ldb-1.1.15.tar.gz: 869eb3a75dd05ccd4eb03677475a39d54a13cd6d
   ldb-1.1.16.tar.gz: c7d8fc8bcdaab8ddc2770d1c815b56e5993eb6df
+sources:
+  ldb-1.1.17.tar.gz: d540459c585935788a996828c3b9cd797e740ea6

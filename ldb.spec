@@ -3,6 +3,7 @@
 %define devname %mklibname -d ldb
 %define libpyldbutil %mklibname pyldb-util %{major}
 %define devpyldbutil %mklibname -d pyldb-util
+%define debug_package %{nil}
 
 %define check_sig() export GNUPGHOME=%{_tmppath}/rpm-gpghome \
 if [ -d "$GNUPGHOME" ] \
@@ -16,8 +17,8 @@ rm -Rf $GNUPGHOME \
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
 Epoch:		1
-Version:	1.1.16
-Release:	7
+Version:	1.1.17
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://ldb.samba.org/
@@ -36,6 +37,7 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(talloc)
 BuildRequires:	pkgconfig(tdb)
 BuildRequires:	pkgconfig(tevent)
+BuildRequires:	waf
 
 %track
 prog %{name} = {
@@ -104,10 +106,23 @@ sed -i -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/
 # Fix unreadable files
 find . -perm 0640 -exec chmod 0644 '{}' \;
 
+sed -i -e 's,/usr/bin/env python,%{__python2},' buildtools/bin/waf
+
 %build
 # The ldb linker script is incompatible with gold
 export LDFLAGS="%{optflags} -fuse-ld=bfd"
-%configure2_5x \
+export PYTHON=%{__python2}
+# configure is a waf wrapper
+./configure \
+    --prefix=%{_prefix} \
+    --exec-prefix=%{_exec_prefix} \
+    --sbindir=%{_sbindir} \
+    --bindir=%{_bindir} \
+    --datadir=%{_datadir} \
+    --libdir=%{_libdir} \
+    --sysconfdir=%{_sysconfdir} \
+    --includedir=%{_includedir} \
+    --mandir=%{_mandir} \
 	--with-modulesdir=%{_libdir} \
 	--bundled-libraries=NONE
 %make
@@ -130,7 +145,7 @@ export LDFLAGS="%{optflags} -fuse-ld=bfd"
 %{_mandir}/man3/ldb*.3*
 
 %files -n python-ldb
-%{py_platsitedir}/ldb.so
+%{py2_platsitedir}/ldb.so
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.so.%{major}*
