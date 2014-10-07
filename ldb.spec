@@ -37,7 +37,6 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(talloc)
 BuildRequires:	pkgconfig(tdb)
 BuildRequires:	pkgconfig(tevent)
-BuildRequires:	waf
 
 %track
 prog %{name} = {
