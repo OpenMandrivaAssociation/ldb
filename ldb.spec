@@ -16,13 +16,13 @@ rm -Rf $GNUPGHOME \
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
 Epoch:		1
-Version:	1.1.16
-Release:	2
+Version:	1.1.8
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
-Url:		http://ldb.samba.org/
-Source0:	http://www.samba.org/ftp/ldb/%{name}-%{version}.tar.gz
-Source1:	http://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
+Url:		https://ldb.samba.org/
+Source0:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.gz
+Source1:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
 Source2:	samba-pubkey.asc
 
 BuildRequires:	docbook-style-xsl
