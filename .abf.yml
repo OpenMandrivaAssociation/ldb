@@ -1,3 +1,6 @@
-sources:
+removed_sources:
   ldb-1.1.18.tar.gz: 3f5914f3d66cdfafce42bd8e40bb1e12b3ed23eb
+sources:
   ldb-1.1.18.tar.asc: 6cb1a0520114ca997df3ccfaadeee39e657f8b4b
+  ldb-1.1.20.tar.asc: 520b8f7b5a8d5de83715a429c33f7865db6aa824
+  ldb-1.1.20.tar.gz: f0419faf576b425775b52b46bd42875e0bd84e77

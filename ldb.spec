@@ -17,13 +17,13 @@ rm -Rf $GNUPGHOME \
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
 Epoch:		1
-Version:	1.1.18
+Version:	1.1.20
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
-Url:		http://ldb.samba.org/
-Source0:	http://www.samba.org/ftp/ldb/%{name}-%{version}.tar.gz
-Source1:	http://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
+Url:		https://ldb.samba.org/
+Source0:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.gz
+Source1:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
 Source2:	samba-pubkey.asc
 
 BuildRequires:	docbook-style-xsl
@@ -105,12 +105,12 @@ sed -i -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/
 # Fix unreadable files
 find . -perm 0640 -exec chmod 0644 '{}' \;
 
-sed -i -e 's,/usr/bin/env python,%{__python2},' buildtools/bin/waf
+#sed -i -e 's,/usr/bin/env python,%{__python2},' buildtools/bin/waf
 
 %build
 # The ldb linker script is incompatible with gold
 export LDFLAGS="%{optflags} -fuse-ld=bfd"
-export PYTHON=%{__python2}
+export PYTHON=%{__python}
 # configure is a waf wrapper
 ./configure \
     --prefix=%{_prefix} \
@@ -144,7 +144,7 @@ export PYTHON=%{__python2}
 %{_mandir}/man3/ldb*.3*
 
 %files -n python-ldb
-%{py2_platsitedir}/ldb.so
+%{py_platsitedir}/ldb.so
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.so.%{major}*
