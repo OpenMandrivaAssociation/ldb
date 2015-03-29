@@ -105,7 +105,7 @@ sed -i -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/
 # Fix unreadable files
 find . -perm 0640 -exec chmod 0644 '{}' \;
 
-#sed -i -e 's,/usr/bin/env python,%{__python2},' buildtools/bin/waf
+sed -i -e 's,/usr/bin/env python,%{__python2},' buildtools/bin/waf
 
 %build
 # The ldb linker script is incompatible with gold
