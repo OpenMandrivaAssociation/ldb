@@ -110,7 +110,7 @@ find . -perm 0640 -exec chmod 0644 '{}' \;
 %build
 # The ldb linker script is incompatible with gold
 export LDFLAGS="%{optflags} -fuse-ld=bfd"
-export PYTHON=%{__python}
+export PYTHON=%{__python2}
 # configure is a waf wrapper
 ./configure \
     --prefix=%{_prefix} \
@@ -122,8 +122,8 @@ export PYTHON=%{__python}
     --sysconfdir=%{_sysconfdir} \
     --includedir=%{_includedir} \
     --mandir=%{_mandir} \
-	--with-modulesdir=%{_libdir} \
-	--bundled-libraries=NONE
+    --with-modulesdir=%{_libdir} \
+    --bundled-libraries=NONE
 %make
 
 %install
@@ -144,7 +144,7 @@ export PYTHON=%{__python}
 %{_mandir}/man3/ldb*.3*
 
 %files -n python-ldb
-%{py_platsitedir}/ldb.so
+%{py2_platsitedir}/ldb.so
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.so.%{major}*
