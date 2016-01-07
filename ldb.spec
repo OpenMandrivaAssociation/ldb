@@ -17,8 +17,8 @@ rm -Rf $GNUPGHOME \
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
 Epoch:		1
-Version:	1.1.20
-Release:	2
+Version:	1.1.24
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
@@ -145,6 +145,7 @@ export PYTHON=%{__python2}
 
 %files -n python-ldb
 %{py2_platsitedir}/ldb.so
+%{py2_platsitedir}/*.py
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.so.%{major}*
