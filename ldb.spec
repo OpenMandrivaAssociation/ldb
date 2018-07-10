@@ -18,7 +18,7 @@ Summary:	Library implementing Samba's embedded database
 Name:		ldb
 Epoch:		1
 Version:	1.4.0
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
