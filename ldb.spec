@@ -17,8 +17,8 @@ rm -Rf $GNUPGHOME \
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
 Epoch:		1
-Version:	1.4.0
-Release:	2
+Version:	1.5.1
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
@@ -32,6 +32,7 @@ BuildRequires:	python-tevent >= 1:0.9.16-0.beta8.0
 BuildRequires:	xsltproc
 BuildRequires:	openldap-devel
 BuildRequires:	pkgconfig(cmocka) >= 1.1.0
+BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(pytalloc-util)
 BuildRequires:	pkgconfig(python)
