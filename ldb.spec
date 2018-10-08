@@ -36,7 +36,7 @@ BuildRequires:	pkgconfig(cmocka) >= 1.1.0
 BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(pytalloc-util)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(talloc)
 BuildRequires:	pkgconfig(tdb)
 BuildRequires:	pkgconfig(tevent)
