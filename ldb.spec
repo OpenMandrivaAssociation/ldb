@@ -39,13 +39,6 @@ BuildRequires:	pkgconfig(talloc)
 BuildRequires:	pkgconfig(tdb)
 BuildRequires:	pkgconfig(tevent)
 
-%track
-prog %{name} = {
-	url = http://www.samba.org/ftp/ldb/
-	version = %{version}
-	regex = %{name}-(__VER__)\.tar\.gz
-}
-
 %description
 Library implementing Samba's embedded database and utilities for backing up,
 restoring and manipulating the database.
