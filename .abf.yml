@@ -1,3 +1,5 @@
-sources:
-  ldb-1.4.0.tar.asc: 1a5eaeb9a8aa831bcaf9092ea8578f16f14e4b05
+removed_sources:
   ldb-1.4.0.tar.gz: 90f2544fb4478901b5c64e587dce97584b29d90b
+sources:
+  ldb-1.5.1.tar.asc: 2bc1e1846f806612caf8b0453035f79529e05258
+  ldb-1.5.1.tar.gz: 1dcb549e51ccf3fe4bfa1816431f6e091ce54694
