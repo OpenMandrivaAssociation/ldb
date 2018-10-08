@@ -32,6 +32,7 @@ BuildRequires:	python-tevent >= 1:0.9.16-0.beta8.0
 BuildRequires:	xsltproc
 BuildRequires:	openldap-devel
 BuildRequires:	pkgconfig(cmocka) >= 1.1.0
+BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(pytalloc-util)
 BuildRequires:	pkgconfig(python)
