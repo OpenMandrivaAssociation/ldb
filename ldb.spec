@@ -141,7 +141,7 @@ export PYTHON=%{__python2}
 
 %files -n python-ldb
 %{py2_platsitedir}/ldb.so
-%{py2_platsitedir}/*.py
+%{py2_platsitedir}/*.py*
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.so.%{major}*
