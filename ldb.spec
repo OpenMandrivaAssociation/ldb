@@ -36,7 +36,7 @@ BuildRequires:	pkgconfig(cmocka) >= 1.1.0
 BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(pytalloc-util)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(talloc)
 BuildRequires:	pkgconfig(tdb)
 BuildRequires:	pkgconfig(tevent)
@@ -141,7 +141,7 @@ export PYTHON=%{__python2}
 
 %files -n python-ldb
 %{py2_platsitedir}/ldb.so
-%{py2_platsitedir}/*.py
+%{py2_platsitedir}/*.py*
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.so.%{major}*
