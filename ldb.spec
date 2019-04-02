@@ -30,6 +30,7 @@ Source2:	samba-pubkey.asc
 BuildRequires:	docbook-style-xsl
 BuildRequires:	python-tdb >= 1.4.0 tdb-utils
 BuildRequires:	python-tevent >= 0.10.0
+BuildRequires:	python-talloc pytalloc-util-devel
 BuildRequires:	xsltproc
 BuildRequires:	lmdb-devel
 BuildRequires:	openldap-devel
