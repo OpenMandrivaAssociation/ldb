@@ -16,10 +16,9 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-Epoch:		1
 # crisb - 1.4 is for samba 4.9, 1.5 is for samba 4.10
-# dont update to 1.5 until corresponding samba is released
-Version:	1.4.4
+# dont update to 1.6 until corresponding samba is released
+Version:	1.5.4
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
@@ -29,18 +28,17 @@ Source1:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
 Source2:	samba-pubkey.asc
 
 BuildRequires:	docbook-style-xsl
-BuildRequires:	python-tdb >= 1.3.15
-BuildRequires:	python-tevent >= 1:0.9.16-0.beta8.0
+BuildRequires:	python-tdb >= 1.4.0 tdb-utils
+BuildRequires:	python-tevent >= 0.10.0
 BuildRequires:	xsltproc
 BuildRequires:	lmdb-devel
 BuildRequires:	openldap-devel
 BuildRequires:	pkgconfig(cmocka) >= 1.1.0
 BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
-BuildRequires:	pkgconfig(pytalloc-util)
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(talloc)
-BuildRequires:	pkgconfig(tdb)
+BuildRequires:	pkgconfig(tdb) >= 1.4.0
 BuildRequires:	pkgconfig(tevent)
 
 %description
@@ -103,12 +101,9 @@ sed -i -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/
 # Fix unreadable files
 find . -perm 0640 -exec chmod 0644 '{}' \;
 
-sed -i -e 's,/usr/bin/env python,%{__python2},' buildtools/bin/waf
-
 %build
 # The ldb linker script is incompatible with gold
 export LDFLAGS="%{optflags} -fuse-ld=bfd"
-export PYTHON=%{__python2}
 # configure is a waf wrapper
 ./configure \
     --prefix=%{_prefix} \
@@ -142,14 +137,14 @@ export PYTHON=%{__python2}
 %{_mandir}/man3/ldb*.3*
 
 %files -n python-ldb
-%{py2_platsitedir}/ldb.so
-%{py2_platsitedir}/*.py*
+%{py_platsitedir}/ldb*.so
+%{py_platsitedir}/*.py*
+%{py_platsitedir}/__pycache__/*
 
 %files -n %{libpyldbutil}
-%{_libdir}/libpyldb-util.so.%{major}*
+%{_libdir}/libpyldb-util.*.so.%{major}*
 
 %files -n %{devpyldbutil}
-%{_libdir}/libpyldb-util.so
+%{_libdir}/libpyldb-util.*.so
 %{_includedir}/pyldb.h
-%{_libdir}/pkgconfig/pyldb-util.pc
-
+%{_libdir}/pkgconfig/pyldb-util.*.pc
