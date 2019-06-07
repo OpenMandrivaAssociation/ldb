@@ -19,7 +19,7 @@ Name:		ldb
 # crisb - 1.4 is for samba 4.9, 1.5 is for samba 4.10
 # dont update to 1.6 until corresponding samba is released
 Version:	1.5.4
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
@@ -75,6 +75,7 @@ Library implementing Samba's embedded database
 %package -n python-ldb
 Group:		Development/Python
 Summary:	Python bindings to Samba's ldb embedded database
+Requires:	%{libpyldbutil} = %{EVRD}
 
 %description -n python-ldb
 Python bindings to Samba's ldb embedded database
