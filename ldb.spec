@@ -1,5 +1,5 @@
-%define major	1
-%define libname	%mklibname ldb %{major}
+%define major 1
+%define libname %mklibname ldb %{major}
 %define devname %mklibname -d ldb
 %define libpyldbutil %mklibname pyldb-util %{major}
 %define devpyldbutil %mklibname -d pyldb-util
@@ -18,8 +18,8 @@ Summary:	Library implementing Samba's embedded database
 Name:		ldb
 # crisb - 1.4 is for samba 4.9, 1.5 is for samba 4.10
 # dont update to 1.6 until corresponding samba is released
-Version:	1.6.3
-Release:	1
+Version:	1.5.4
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
@@ -96,13 +96,14 @@ Requires:	%{libpyldbutil} = %{EVRD}
 Development files for utility library for using tdb functions in python.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i -e 's,http://docbook.sourceforge.net/release/xsl/current,/usr/share/sgml/docbook/xsl-stylesheets,g' docs/builddocs.sh buildtools/wafsamba/wafsamba.py buildtools/wafsamba/samba_conftests.py
 
 # Fix unreadable files
 find . -perm 0640 -exec chmod 0644 '{}' \;
 
 %build
+%setup_compile_flags
 # The ldb linker script is incompatible with gold
 export LDFLAGS="%{optflags} -fuse-ld=bfd"
 # configure is a waf wrapper
@@ -118,10 +119,11 @@ export LDFLAGS="%{optflags} -fuse-ld=bfd"
     --mandir=%{_mandir} \
     --with-modulesdir=%{_libdir} \
     --bundled-libraries=NONE
-%make
+
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libldb.so.%{major}*
