@@ -18,7 +18,7 @@ Summary:	Library implementing Samba's embedded database
 Name:		ldb
 # crisb - 1.4 is for samba 4.9, 1.5 is for samba 4.10
 # dont update to 1.6 until corresponding samba is released
-Version:	1.6.3
+Version:	1.5.4
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
