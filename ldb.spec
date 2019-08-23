@@ -1,4 +1,4 @@
-%define major 1
+%define major 2
 %define libname %mklibname ldb %{major}
 %define devname %mklibname -d ldb
 %define libpyldbutil %mklibname pyldb-util %{major}
@@ -16,9 +16,7 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-# crisb - 1.4 is for samba 4.9, 1.5 is for samba 4.10
-# dont update to 1.6 until corresponding samba is released
-Version:	1.5.5
+Version:	2.0.5
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
