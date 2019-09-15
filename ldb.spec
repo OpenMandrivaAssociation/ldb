@@ -16,7 +16,7 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-Version:	2.0.5
+Version:	2.0.7
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
