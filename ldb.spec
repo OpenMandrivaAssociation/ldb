@@ -40,6 +40,9 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(talloc)
 BuildRequires:	pkgconfig(tdb) >= 1.4.0
 BuildRequires:	pkgconfig(tevent)
+# Looked for by configure -- not sure if they're actually
+# used anywhere
+BuildRequires:	gdb git-core
 
 %description
 Library implementing Samba's embedded database and utilities for backing up,
@@ -119,7 +122,7 @@ export LDFLAGS="%{optflags} -fuse-ld=bfd"
     --includedir=%{_includedir} \
     --mandir=%{_mandir} \
     --with-modulesdir=%{_libdir} \
-    --bundled-libraries=NONE
+    --bundled-libraries=NONE || (cat bin/config.log ; exit 1)
 
 %make_build
 
