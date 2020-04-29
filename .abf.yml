@@ -1,2 +1,3 @@
 sources:
-  ldb-2.1.1.tar.gz: bf19099dc20352d8dfcc80ca548c9fb744b0115c
+  ldb-2.1.2.tar.asc: 8ad8ddc432e5386ffbf9323bc6279d29f43700aa
+  ldb-2.1.2.tar.gz: 970bda0e5607bab3a221fe3abf91ac6969790d36
