@@ -16,8 +16,8 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-# Please don't update to >= 2.3.0 before samba supports it
-Version:	2.2.0
+# Please don't update to >= 2.4.0 before samba supports it
+Version:	2.3.0
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
