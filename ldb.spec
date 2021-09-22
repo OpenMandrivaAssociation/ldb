@@ -3,7 +3,6 @@
 %define devname %mklibname -d ldb
 %define libpyldbutil %mklibname pyldb-util %{major}
 %define devpyldbutil %mklibname -d pyldb-util
-%define debug_package %{nil}
 
 %define check_sig() export GNUPGHOME=%{_tmppath}/rpm-gpghome \
 if [ -d "$GNUPGHOME" ] \
@@ -16,8 +15,8 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-# Please don't update to >= 2.4.0 before samba supports it
-Version:	2.3.0
+# Please don't update to >= 2.5.0 before samba supports it
+Version:	2.4.0
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
