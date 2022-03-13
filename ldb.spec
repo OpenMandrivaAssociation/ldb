@@ -17,7 +17,7 @@ Summary:	Library implementing Samba's embedded database
 Name:		ldb
 # Please don't update to >= 2.5.0 before samba supports it
 Version:	2.5.0
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
@@ -145,7 +145,7 @@ export LDFLAGS="%{optflags} -fuse-ld=bfd"
 %files -n python-ldb
 %{py_platsitedir}/ldb*.so
 %{py_platsitedir}/*.py*
-%{py_platsitedir}/__pycache__/*
+# %{py_platsitedir}/__pycache__/*
 
 %files -n %{libpyldbutil}
 %{_libdir}/libpyldb-util.*.so.%{major}*
