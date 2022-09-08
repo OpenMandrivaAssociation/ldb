@@ -1,7 +1,7 @@
 %define major 2
-%define libname %mklibname ldb %{major}
+%define libname %mklibname ldb
 %define devname %mklibname -d ldb
-%define libpyldbutil %mklibname pyldb-util %{major}
+%define libpyldbutil %mklibname pyldb-util
 %define devpyldbutil %mklibname -d pyldb-util
 
 %define check_sig() export GNUPGHOME=%{_tmppath}/rpm-gpghome \
@@ -16,7 +16,7 @@ rm -Rf $GNUPGHOME \
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
 # Please don't update to >= 2.6.0 before samba supports it
-Version:	2.5.2
+Version:	2.6.1
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
@@ -26,7 +26,7 @@ Source1:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
 Source2:	samba-pubkey.asc
 
 BuildRequires:	docbook-style-xsl
-BuildRequires:	python-tdb >= 1.4.0 tdb-utils
+BuildRequires:	python-tdb >= 1.4.7 tdb-utils
 BuildRequires:	python-tevent >= 0.10.0
 BuildRequires:	python-talloc pytalloc-util-devel
 BuildRequires:	xsltproc
@@ -37,7 +37,7 @@ BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(talloc)
-BuildRequires:	pkgconfig(tdb) >= 1.4.0
+BuildRequires:	pkgconfig(tdb) >= 1.4.7
 BuildRequires:	pkgconfig(tevent)
 # Looked for by configure -- not sure if they're actually
 # used anywhere
@@ -50,6 +50,7 @@ restoring and manipulating the database.
 %package -n %{libname}
 Group:		System/Libraries
 Summary:	Library implementing Samba's embedded database
+%rename %{mklibname ldb 2}
 
 %description -n %{libname}
 Library implementing Samba's embedded database
@@ -85,6 +86,7 @@ Python bindings to Samba's ldb embedded database
 %package -n %{libpyldbutil}
 Group:		System/Libraries
 Summary:	Utility library for using tdb functions in python
+%rename %{mklibname pyldb-util 2}
 
 %description -n %{libpyldbutil}
 Utility library for using tdb functions in python.
@@ -130,6 +132,11 @@ export LDFLAGS="%{optflags} -fuse-ld=bfd"
 
 %files -n %{libname}
 %{_libdir}/libldb.so.%{major}*
+%{_libdir}/libldb-cmdline.so
+%{_libdir}/libldb-key-value.so
+%{_libdir}/libldb-mdb-int.so
+%{_libdir}/libldb-tdb-err-map.so
+%{_libdir}/libldb-tdb-int.so
 
 %files -n %{devname}
 %{_libdir}/libldb.so
