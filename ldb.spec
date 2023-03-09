@@ -15,8 +15,8 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-# Please don't update to >= 2.6.0 before samba supports it
-Version:	2.6.1
+# Please don't update to >= 2.8.0 before samba supports it
+Version:	2.7.1
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
@@ -132,11 +132,7 @@ export LDFLAGS="%{optflags} -fuse-ld=bfd"
 
 %files -n %{libname}
 %{_libdir}/libldb.so.%{major}*
-%{_libdir}/libldb-cmdline.so
-%{_libdir}/libldb-key-value.so
-%{_libdir}/libldb-mdb-int.so
-%{_libdir}/libldb-tdb-err-map.so
-%{_libdir}/libldb-tdb-int.so
+%{_libdir}/ldb
 
 %files -n %{devname}
 %{_libdir}/libldb.so
