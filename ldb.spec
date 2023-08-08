@@ -15,9 +15,9 @@ rm -Rf $GNUPGHOME \
 
 Summary:	Library implementing Samba's embedded database
 Name:		ldb
-# Please don't update to >= 2.8.0 before samba supports it
+# Please don't update to >= 2.9.0 before samba supports it
 Version:	2.8.0
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
@@ -31,7 +31,7 @@ BuildRequires:	python-tevent >= 0.10.0
 BuildRequires:	python-talloc pytalloc-util-devel
 BuildRequires:	xsltproc
 BuildRequires:	lmdb-devel
-BuildRequires:	openldap-devel
+BuildRequires:	pkgconfig(ldap)
 BuildRequires:	pkgconfig(cmocka) >= 1.1.0
 BuildRequires:	pkgconfig(libtirpc)
 BuildRequires:	pkgconfig(popt)
