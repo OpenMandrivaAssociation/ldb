@@ -17,7 +17,7 @@ Summary:	Library implementing Samba's embedded database
 Name:		ldb
 # Please don't update to >= 2.10.0 before samba supports it
 Version:	2.9.2
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://ldb.samba.org/
