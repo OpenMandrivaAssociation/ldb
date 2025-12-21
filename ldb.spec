@@ -25,6 +25,11 @@ Source0:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.gz
 Source1:	https://www.samba.org/ftp/ldb/%{name}-%{version}.tar.asc
 Source2:	samba-pubkey.asc
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	docbook-style-xsl
 BuildRequires:	python-tdb >= 1.4.7 tdb-utils
 BuildRequires:	python-tevent >= 0.10.0
